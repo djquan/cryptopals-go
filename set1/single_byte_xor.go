@@ -5,13 +5,18 @@ import (
 	"unicode"
 )
 
-func singleByteXor(input string) (byte, string, error) {
+func singleByteXor(input string) (byte, string, int, error) {
 	bs, err := hex.DecodeString(input)
 
 	if err != nil {
-		return 0, "", err
+		return 0, "", 0, err
 	}
 
+	bytes, s, i := singleByteXorBytes(bs)
+	return bytes, s, i, nil
+}
+
+func singleByteXorBytes(bs []byte) (byte, string, int) {
 	score := 0
 	var decoderByte byte
 	var decodedString string
@@ -31,7 +36,7 @@ func singleByteXor(input string) (byte, string, error) {
 		}
 	}
 
-	return decoderByte, decodedString, nil
+	return decoderByte, decodedString, score
 }
 
 func scoreBs(bytes []byte) int {

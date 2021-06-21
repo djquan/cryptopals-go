@@ -25,7 +25,7 @@ func Test_singleByteXor(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, message, err := singleByteXor(tt.args.input)
+			got, message, _, err := singleByteXor(tt.args.input)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("singleByteXor() error = %v, wantErr %v", err, tt.wantErr)
 				return
