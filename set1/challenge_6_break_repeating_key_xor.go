@@ -9,7 +9,7 @@ import (
 func breakTheCipher(filename string) ([]byte, error) {
 	decodeFile, err := base64DecodeFile(filename)
 	if err != nil {
-		return []byte{}, err
+		return nil, err
 	}
 
 	size := findKeySizes(decodeFile)
@@ -84,7 +84,7 @@ func findKeySizes(input []byte) int {
 func base64DecodeFile(filename string) ([]byte, error) {
 	file, err := os.Open(filename)
 	if err != nil {
-		return []byte{}, err
+		return nil, err
 	}
 
 	input := make([]byte, 0)

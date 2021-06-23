@@ -9,7 +9,7 @@ func hexToBase64(input string) ([]byte, error) {
 	in, err := hex.DecodeString(input)
 
 	if err != nil {
-		return []byte{}, err
+		return nil, err
 	}
 
 	encoder := base64.StdEncoding

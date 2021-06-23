@@ -7,12 +7,12 @@ func fixedXor(s1, s2 string) ([]byte, error) {
 
 	b1, err := hex.DecodeString(s1)
 	if err != nil {
-		return []byte{}, err
+		return nil, err
 	}
 
 	b2, err := hex.DecodeString(s2)
 	if err != nil {
-		return []byte{}, err
+		return nil, err
 	}
 
 	xorB := make([]byte, len(b1))
